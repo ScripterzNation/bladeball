@@ -195,9 +195,6 @@ if game.CoreGui:FindFirstChild("libbb") then
     local GameTitle = Instance.new("TextLabel")
     local MainTitle = Instance.new("TextLabel")
     local MainFrameholder = Instance.new("Frame")
-    local Discord = Instance.new("TextButton")
-    local DiscordCorner = Instance.new("UICorner")
-    local DiscordPadding = Instance.new("UIPadding")
     local MenuBtn = Instance.new("TextButton")
     local MenuBtnCorner = Instance.new("UICorner")
     local MenuBtnPadding = Instance.new("UIPadding")
@@ -339,11 +336,9 @@ if game.CoreGui:FindFirstChild("libbb") then
              {Position = UDim2.new(2.455, 0, -0.417, 0)}
           ):Play()
           repeat wait() until SettingsFrame.Position == UDim2.new(2.455, 0, -0.417, 0)
-          Discord.Visible = true
           MenuBtn.Visible = true
           Toggled = true
        else
-          Discord.Visible = false
           MenuBtn.Visible = false
           TweenService:Create(
              SettingsFrame,
@@ -367,35 +362,6 @@ if game.CoreGui:FindFirstChild("libbb") then
     SettingsFrameCorner.CornerRadius = UDim.new(0, 6)
     SettingsFrameCorner.Name = "SettingsFrameCorner"
     SettingsFrameCorner.Parent = SettingsFrame
- 
- 
-    Discord.Name = "Discord"
-    Discord.Parent = SettingsFrame
-    Discord.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-    Discord.BackgroundTransparency = 1.000
-    Discord.Position = UDim2.new(-3.4289414e-07, 0, 0, 0)
-    Discord.Size = UDim2.new(1.00000072, 0, 0, 20)
-    Discord.Font = Enum.Font.Gotham
-    Discord.Text = "Internal UI"
-    Discord.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Discord.TextSize = 13.000
-    Discord.TextTransparency = 0.400
-    Discord.TextXAlignment = Enum.TextXAlignment.Left
-    Discord.Visible = false
-    
-    DiscordCorner.CornerRadius = UDim.new(0, 6)
-    DiscordCorner.Name = "DiscordCorner"
-    DiscordCorner.Parent = Discord
-    
-    DiscordPadding.Name = "DiscordPadding"
-    DiscordPadding.Parent = Discord
-    DiscordPadding.PaddingLeft = UDim.new(0, 10)
- 
-    Discord.MouseButton1Click:Connect(function()
-       Discord.TextSize = 10
-       TweenService:Create(Discord,TweenInfo.new(.1, Enum.EasingStyle.Quad),{TextSize = 13.000}):Play()
-       InternalUIFrame.Visible = true
-    end)
  
  
     MenuBtn.Name = "MenuBtn"
@@ -908,80 +874,6 @@ if game.CoreGui:FindFirstChild("libbb") then
           
           ScriptHubCorner.Name = "ScriptHubCorner"
           ScriptHubCorner.Parent = ScriptHub
- 
- 
-          local DiscordBut = Instance.new("TextButton")
-          local DiscordButTitle = Instance.new("TextLabel")
-          local DiscordButDesc = Instance.new("TextLabel")
-          local DiscordButCorner = Instance.new("UICorner")
- 
-          DiscordBut.Name = "DiscordBut"
-          DiscordBut.Parent = MainSettingsContainer
-          DiscordBut.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-          DiscordBut.Position = UDim2.new(0.0450380854, 0, 0.180327863, 0)
-          DiscordBut.Size = UDim2.new(0.909923851, 0, 0.00819672085, 34)
-          DiscordBut.AutoButtonColor = false
-          DiscordBut.Font = Enum.Font.SourceSans
-          DiscordBut.TextColor3 = Color3.fromRGB(0, 0, 0)
-          DiscordBut.TextSize = 14.000
-          DiscordBut.TextTransparency = 1.000
-          DiscordBut.TextXAlignment = Enum.TextXAlignment.Left
- 
-          DiscordBut.MouseButton1Click:Connect(function()
-             Ripple(DiscordBut)
-         end)
- 
-       DiscordBut.MouseButton1Click:Connect(function()
-          spawn(function()
-             pcall(function()
-                 local req = (syn and syn.request) or (http and http.request) or http_request
-                 if req then
-                     req({
-                         Url = 'http://127.0.0.1:6463/rpc?v=1',
-                         Method = 'POST',
-                         Headers = {
-                             ['Content-Type'] = 'application/json',
-                             Origin = 'https://discord.com'
-                         },
-                         Body = game:GetService('HttpService'):JSONEncode({
-                             cmd = 'INVITE_BROWSER',
-                             nonce = game:GetService('HttpService'):GenerateGUID(false),
-                             args = {code = "9RHAqwHKH2"}
-                         })
-                     })
-                 end
-             end)
-          end)
-       end)
-          
-          DiscordButTitle.Name = "DiscordButTitle"
-          DiscordButTitle.Parent = DiscordBut
-          DiscordButTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-          DiscordButTitle.BackgroundTransparency = 1.000
-          DiscordButTitle.Position = UDim2.new(0, 13, 0, 0)
-          DiscordButTitle.Size = UDim2.new(0.287203521, 1, 0.5, 0)
-          DiscordButTitle.Font = Enum.Font.Gotham
-          DiscordButTitle.Text = "Discord"
-          DiscordButTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
-          DiscordButTitle.TextSize = 14.000
-          DiscordButTitle.TextXAlignment = Enum.TextXAlignment.Left
-          
-          DiscordButDesc.Name = "DiscordButDesc"
-          DiscordButDesc.Parent = DiscordBut
-          DiscordButDesc.AnchorPoint = Vector2.new(0, 1)
-          DiscordButDesc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-          DiscordButDesc.BackgroundTransparency = 1.000
-          DiscordButDesc.Position = UDim2.new(0.0234451853, 5, 1.01473689, 0)
-          DiscordButDesc.Size = UDim2.new(0.589060307, 1, 0.5, 0)
-          DiscordButDesc.Font = Enum.Font.Gotham
-          DiscordButDesc.Text = "Directly joins Project Meow's Discord Server"
-          DiscordButDesc.TextColor3 = Color3.fromRGB(255, 255, 255)
-          DiscordButDesc.TextSize = 12.000
-          DiscordButDesc.TextTransparency = 0.400
-          DiscordButDesc.TextXAlignment = Enum.TextXAlignment.Left
-          
-          DiscordButCorner.Name = "DiscordButCorner"
-          DiscordButCorner.Parent = DiscordBut
  
  
  
